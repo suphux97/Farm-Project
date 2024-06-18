@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T0-List Farm products</title>
+    <title>T0-List Daily Tasks</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="container">
-        <h1>Product-list</h1>
+        <h1>Task-list</h1>
         <div class="input-container">
-            <input type="text" id="new-product" placeholder="Add a new product">
-            <button id="add-product">Add</button>
+            <input type="text" id="new-task" placeholder="Add a new task">
+            <button id="add-task">Add</button>
         </div>
-        <ul id="product-list"></ul>
+        <ul id="task-list"></ul>
     </div>
     <script>
-      document.getElementById('add-product').addEventListener('click', addProduct);
-document.getElementById('new-product').addEventListener('keypress', function(e) {
+      document.getElementById('add-task').addEventListener('click', addTask);
+document.getElementById('new-task').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
-        addProduct();
+        addTask();
     }
 });
 
-function addProduct() {
-    const taskInput = document.getElementById('new-product');
+function addTask() {
+    const taskInput = document.getElementById('new-task');
     const taskText = taskInput.value.trim();
 
     if (taskText !== '') {
-        const taskList = document.getElementById('product-list');
+        const taskList = document.getElementById('task-list');
         
         const listItem = document.createElement('li');
 
