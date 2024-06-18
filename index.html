@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T0-List Farm products</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Product-list</h1>
+        <div class="input-container">
+            <input type="text" id="new-product" placeholder="Add a new product">
+            <button id="add-product">Add</button>
+        </div>
+        <ul id="product-list"></ul>
+    </div>
+    <script>
+      document.getElementById('add-product').addEventListener('click', addProduct);
+document.getElementById('new-product').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        addProduct();
+    }
+});
+
+function addProduct() {
+    const taskInput = document.getElementById('new-product');
+    const taskText = taskInput.value.trim();
+
+    if (taskText !== '') {
+        const taskList = document.getElementById('product-list');
+        
+        const listItem = document.createElement('li');
+
+        const span = document.createElement('span');
+        span.textContent = taskText;
+        span.addEventListener('click', toggleComplete);
+        
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', deleteTask);
+
+        listItem.appendChild(span);
+        listItem.appendChild(deleteButton);
+        taskList.appendChild(listItem);
+
+        taskInput.value = '';
+    }
+}
+
+function deleteTask(e) {
+    const listItem = e.target.parentElement;
+    listItem.remove();
+}
+
+function toggleComplete(e) {
+    const listItem = e.target.parentElement;
+    listItem.classList.toggle('completed');
+}
+
+
+    </script>
+</body>
+</html>
